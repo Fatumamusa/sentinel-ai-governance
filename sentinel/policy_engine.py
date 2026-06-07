@@ -135,6 +135,17 @@ def build_sentinel_engine() -> PolicyEngine:
         reason    = "Standard low-risk inference — approved",
     ))
 
+    engine.register(Policy(
+        name      = "allow-low-risk-deployment",
+        priority  = 10,
+        condition = lambda a: (
+            a.get("action_type") == "deploy"
+            and a.get("risk_tier") == "LOW"
+        ),
+        verdict   = Verdict.ALLOW,
+        reason    = "LOW-risk model deployment approved with monitoring",
+    ))
+
     return engine
 
 

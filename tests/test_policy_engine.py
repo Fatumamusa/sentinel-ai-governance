@@ -98,4 +98,4 @@ def test_priority_order_lower_fires_first():
 
 def test_policy_count():
     engine = build_sentinel_engine()
-    assert engine.policy_count == 5
+    assert engine.policy_count == 6
